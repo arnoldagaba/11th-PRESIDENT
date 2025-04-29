@@ -1,12 +1,12 @@
 import { createContext, useState, ReactNode } from "react";
-import { Donation, DonorInfo, PaymentMethod } from "@/types";
+import { Donation, DonorInfo, PAYMENT_METHODS } from "@/types";
 
 interface DonationContextProps {
     totalDonations: number;
     recentDonations: Donation[];
     addDonation: (
         amount: number,
-        paymentMethod: PaymentMethod,
+        paymentMethod: PAYMENT_METHODS,
         donorInfo: DonorInfo
     ) => void;
     isLoading: boolean;
@@ -27,7 +27,7 @@ const DonationProvider = ({ children }: DonationProviderProps) => {
 
     const addDonation = async (
         amount: number,
-        paymentMethod: PaymentMethod,
+        paymentMethod: PAYMENT_METHODS,
         donorInfo: DonorInfo
     ) => {
         setIsLoading(true);
