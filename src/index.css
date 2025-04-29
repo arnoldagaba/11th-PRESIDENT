@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-rotaract-blue-light: oklch(0.97 0.0171 248.01);
+  --color-rotaract-blue: oklch(0.52 0.1771 255.83);
+  --color-rotaract-blue-dark: oklch(0.42 0.141666 255.3841);
+
+  --color-rotaract-gold-light: oklch(0.98 0.0248 89.21);
+  --color-rotaract-gold: oklch(0.83 0.171067 80.5261);
+  --color-rotaract-gold-dark: oklch(0.7 0.1445 80.24);
+
+  --color-rotaract-navy-light: oklch(0.97 0.0069 247.9);
+  --color-rotaract-navy: oklch(0.35 0.0736 256.04);
+  --color-rotaract-navy-dark: oklch(0.28 0.0569 255.45);
+
+  --color-dark-bg: oklch(0.21 0.0318 264.66);
+  --color-dark-surface: oklch(0.28 0.0296 256.85);
+  --color-dark-surface-hover: oklch(0.37 0.0306 259.73);
+
+  --color-dark-primary-light: oklch(0.81 0.0956 251.81);
+  --color-dark-primary: oklch(0.62 0.188 259.81);
+  --color-dark-primary-dark: oklch(0.55 0.2152 262.88);
+
+  --color-dark-secondary-light: oklch(0.89 0.1375 89.24);
+  --color-dark-secondary: oklch(0.83 0.171067 80.5261);
+  --color-dark-secondary-dark: oklch(0.7 0.1445 80.24);
+
+  --color-dark-text-primary: oklch(0.97 0.0029 264.54);
+  --color-dark-text-secondary: oklch(0.87 0.0093 258.34);
+  --color-dark-text-tertiary: oklch(0.71 0.0192 261.32);
+
+  --font-outfit: Outfit, sans-serif;
+
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(1.25rem);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+/* Toast dark mode styles */
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  @apply dark:bg-dark-surface dark:text-white;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-dark-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rotaract-blue dark:bg-dark-primary rounded-full;
+}
+
+/* Smooth transitions for dark mode */
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
